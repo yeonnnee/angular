@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './create-posts.component.html',
 })
 export class PostCreateComponent {
+  newPosts = 'hello';
   handleClick() {
-    console.log('hello');
+    this.newPosts = 'bye';
   }
 }

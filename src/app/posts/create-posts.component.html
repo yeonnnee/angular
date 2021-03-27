@@ -1,2 +1,10 @@
 <h3>create posts component</h3>
+
+<!--it has special property we can bind to, not a attr, but property. and use it with [] -->
+<!--if you want to output test as a string, wrap it in single quote-->
+<textarea row="6" [value]="'text'"></textarea>
+<!--if you want to output newPosts value, use double quote-->
+<textarea row="6" [value]="newPosts"></textarea>
+
 <button (click)="handleClick()">click Me</button>
+<p>{{newPosts}}</p>
