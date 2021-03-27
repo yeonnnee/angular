@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
 })
 export class PostCreateComponent {
   newPosts = 'hello';
-  handleClick() {
+  handleClick(postInput: HTMLTextAreaElement) {
+    const value = postInput.value;
     this.newPosts = 'bye';
   }
 }

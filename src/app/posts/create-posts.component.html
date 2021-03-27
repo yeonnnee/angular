@@ -6,5 +6,8 @@
 <!--if you want to output newPosts value, use double quote-->
 <textarea row="6" [value]="newPosts"></textarea>
 
-<button (click)="handleClick()">click Me</button>
+<!--add a marker, a variable to any html element we want by adding a hashtag-->
+<textarea row="6" [value]="newPosts" #postInput></textarea>
+
+<button (click)="handleClick(postInput)">click Me</button>
 <p>{{newPosts}}</p>
