@@ -1,4 +1,6 @@
-<!-- angular thinks in components and what we do here is we build our won components. this is actually app-root tag in index.html file-->
-
-<h1>Angular Course</h1>
-<app-post-create></app-post-create>
+<app-header></app-header>
+<main>
+  <!-- $evnet 통해서 emitted 한 data에 접근할 수 있다 -->
+  <app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
+  <app-post-list [posts]="storedPosts"></app-post-list>
+</main>

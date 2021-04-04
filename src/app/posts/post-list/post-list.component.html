@@ -1,0 +1,8 @@
+<ul *ngFor="let post of posts">
+  <li>
+    <h4>{{post.title}}</h4>
+    <h5>{{post.content}}</h5>
+  </li>
+</ul>
+
+<div *ngIf="posts.length === 0">No contents</div>
