@@ -6,4 +6,20 @@ import { Component } from "@angular/core";
   styleUrls:['./main.component.css']
 })
 
-export class MainPage {}
+export class MainPage {
+  quantity: number;
+  coffeeStatus: boolean=false;
+  
+  setQty(e: any) { 
+    const val = e.target.value;
+    if (val > 0) {
+      this.quantity = +val;
+    }
+  }
+
+  getOrder() {
+    if (this.quantity > 0) {
+      this.coffeeStatus = true;
+    }
+  }
+}

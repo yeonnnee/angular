@@ -1,7 +1,7 @@
 <div>
   <h2>주문하시겠습니까?</h2>
   <div class="order">
-    <select>
+    <!-- <select>
       <option value="no">---메뉴를 선택해주세요---</option>
       <option value="red coffee">red coffee</option>
       <option value="red coffee">orange coffee</option>
@@ -9,9 +9,12 @@
       <option value="red coffee">green coffee</option>
       <option value="red coffee">blue coffee</option>
       <option value="red coffee">purple coffee</option>
-    </select>
-    <input type="text" />
-    잔 주세요
+    </select> -->
+    <input type="number" (change)="setQty($event)">
+    잔
+    <div>
+      <button (click)="getOrder()">주문하기</button>
+    </div>
   </div>
-  <app-coffee></app-coffee>
+  <app-coffee *ngIf="coffeeStatus"></app-coffee>
 </div>
