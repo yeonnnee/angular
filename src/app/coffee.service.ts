@@ -7,12 +7,15 @@ export class CoffeeService {
 
   setQty(val:number) { 
     
-    if (val > 0) {
+    if (val > 0 && this.quantity.length < val) {
       for (let i = 0; i < val; i++) {
         if (!this.quantity.includes(i)){
           this.quantity.push(i);
         }
       }
+    } else if (val > 0 && this.quantity.length > val) {
+      const lastIndex = this.quantity[this.quantity.length - 1];
+      this.quantity.splice(val,lastIndex);
     }
   
   }
