@@ -1,4 +1,22 @@
 
+.main {
+  padding: 20px;
+}
+
 .order {
   margin-top: 50px;
+}
+
+input {
+  width: 100px;
+  padding: 2px 5px;
+}
+
+.btn-section{
+  margin-top: 20px;
+}
+
+button {
+  padding: 5px;
+  cursor: pointer;
 }
