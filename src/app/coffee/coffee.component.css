@@ -14,7 +14,7 @@
     opacity: 0;
   }
   100%{
-    transform: translateY(-30px) scaleX(6);
+    transform: translateY(-30px) scaleX(5);
   }
 }
 
@@ -30,7 +30,7 @@
   height: 80px;
   background: linear-gradient(to right, #f1f1f1,#d9d9d9);
   border-radius: 0 0 50px 50px;
- 
+  box-shadow: 3px 5px 5px #455a64;
 }
 
 .top {
@@ -84,7 +84,6 @@
 .vapour span{
   min-width: 3px;
   height: 60px;
-  display: block;
   margin: 0 2px;
   position: relative;
   bottom: 30px;
