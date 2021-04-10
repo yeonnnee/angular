@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { CoffeeService } from "../coffee.service";
 
 @Component({
   selector: 'app-main',
@@ -7,18 +8,25 @@ import { Component } from "@angular/core";
 })
 
 export class MainPage {
-  quantity: number;
   coffeeStatus: boolean=false;
-  
+  quantity: Array<number> = [];
+
+  constructor(public coffeeService: CoffeeService){}
+
   setQty(e: any) { 
     const val = e.target.value;
-    if (val > 0) {
-      this.quantity = +val;
-    }
+    this.coffeeService.setQty(+val);
+    // if (this.quantity.length > 0) {
+    //   this.coffeeService.setQty(+val);
+    // } else {
+    //   this.coffeeService.setQty(+val);
+    // }
+    
   }
 
   getOrder() {
-    if (this.quantity > 0) {
+    this.quantity = this.coffeeService.getQty();
+    if (this.quantity.length > 0) {
       this.coffeeStatus = true;
     }
   }

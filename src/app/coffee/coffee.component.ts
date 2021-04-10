@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
+import { CoffeeService } from "../coffee.service";
 
 @Component({
   selector: 'app-coffee',
@@ -6,4 +7,14 @@ import { Component } from "@angular/core";
   styleUrls:['./coffee.component.css']
 })
 
-export class CoffeeComponent {}
+export class CoffeeComponent implements OnInit {
+
+  quantity: Array<number>= [];
+  constructor(public coffeeService:CoffeeService){}
+
+
+
+  ngOnInit() {
+    this.quantity = this.coffeeService.getQty();
+  }
+}
