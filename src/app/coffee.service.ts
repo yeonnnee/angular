@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
+import { OrderList } from "./model/coffee.model";
 
 // @Injectable({ providedIn: 'root' })
 
 export class CoffeeService {
   quantity: Array<number> = [];
+  orderList: Array<OrderList> = [];
 
   setQty(val:number) { 
     
@@ -20,8 +22,17 @@ export class CoffeeService {
   
   }
 
+  // setItem(item: OrderList) {
+  //   this.orderList.push(item);
+  // }
+
 
   getQty() {
     return this.quantity;
   }
+
+  getOrderList() {
+    return this.orderList;
+  }
+
 }

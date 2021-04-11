@@ -1,7 +1,7 @@
 <div class="order-section">
   <h2>주문하시겠습니까?</h2>
   <div class="order">
-    <select>
+    <select (change)="setMenu($event)">
       <option value="no">---메뉴를 선택해주세요---</option>
       <option value="아메리카노">아메리카노</option>
       <option value="바닐라라떼">바닐라라떼</option>
@@ -11,19 +11,28 @@
     <input type="number" (change)="setQty($event)">
     <span>잔</span>
     <div class="btn-section">
-      <button (click)="getOrder()">추가하기</button>
+      <button (click)="addCart()">추가하기</button>
     </div>
   </div>
 </div>
-<aside>
+<aside *ngIf="openOrderForm">
   <h2>Order List</h2>
-  <ul class="order-list">
-    <li class="order-list__item">
-      <div class="order-menu">아메리카노</div>
-      <div class="order-price">$25</div>
-    </li>
-  </ul>
-  <div class="total-price">Total: $25</div>
-  <button class="order-btn">주문하기</button>
+  <div class="order-list-section">
+    <div class="order-label">
+      <div>Menu</div>
+      <div>Qty</div>
+      <div>Price</div>
+    </div>
+    <ul class="order-list">
+      <li class="order-list__item" *ngFor="let list of orderList">
+        <div class="order-menu">{{list.name}}</div>
+        <div class="order-qty">{{list.qty}}</div>
+        <div class="order-price">${{list.price}}</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="total-price">Total: ${{totalPrice}}</div>
+  <button class="order-btn" (click)="getCoffee()">주문하기</button>
 </aside>
 <app-coffee *ngIf="coffeeStatus"></app-coffee>
