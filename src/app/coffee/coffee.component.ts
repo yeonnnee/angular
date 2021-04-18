@@ -11,7 +11,8 @@ export class CoffeeComponent {
 
   // constructor(public coffeeService:CoffeeService){}
 
-  // a.pipe()
+  // a.pipe(
+    
   // .filter(x => x === '복숭아')
   // .map(x => x = x + '통조림')
   //   .takeLatest()
@@ -19,6 +20,7 @@ export class CoffeeComponent {
   //   .switchmasp
   //   .concatmap.
   // .tap()
+  // )
   // .subscribe()
 
   // ngOnInit() {
