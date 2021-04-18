@@ -1,5 +1,4 @@
 import { Component, Input, OnInit} from "@angular/core";
-import { CoffeeService } from "../coffee.service";
 import { CoffeeList} from "../model/coffee.model";
 @Component({
   selector: 'app-coffee',
