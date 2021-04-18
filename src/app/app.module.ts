@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { CoffeeService } from './coffee.service';
 import { CoffeeComponent } from './coffee/coffee.component';
 import { MainPage } from './main/main.component';
+import { Modal } from './modal/modal';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPage,
-    CoffeeComponent
+    CoffeeComponent,
+    Modal
   ],
   imports: [
     BrowserModule
