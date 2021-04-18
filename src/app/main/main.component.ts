@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { CoffeeService } from "../coffee.service";
 import { CoffeeList, OrderList } from "../model/coffee.model";
 
 
@@ -20,13 +19,8 @@ export class MainPage {
   inputVal: number;
   qty: number = 0;
   totalPrice: number = 0;
-
   quantity: Array<number> = [];
 
-
-
-  constructor(public coffeeService: CoffeeService){}
- 
   setMenu(e: any) {
     const menu = e.target.value;
     if (menu !== "no") {
