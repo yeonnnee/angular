@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<aside *ngIf="openOrderForm">
+<aside *ngIf="showOrderForm">
   <h2>Order List</h2>
   <div class="order-list-section">
     <div class="order-label">
@@ -33,6 +33,9 @@
   </div>
 
   <div class="total-price">Total: ${{totalPrice}}</div>
-  <button class="order-btn" (click)="getCoffee()">주문하기</button>
+  <button class="order-btn" (click)="orderNow()">주문하기</button>
 </aside>
-<app-coffee *ngIf="coffeeStatus"></app-coffee>
+<app-coffee *ngIf="showCoffee" [coffeeList]="coffeeList"></app-coffee>
+<app-modal *ngIf="showModal" (confirmOrder)="confirmOrder()" (cancelOrder)="cancelOrder()"></app-modal>
+
+<!-- (@Output 이름)="output에 적용할 함수()" -->

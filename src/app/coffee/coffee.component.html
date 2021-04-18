@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="cup" *ngFor="let cup of quantity">
+  <div class="cup" *ngFor="let coffee of coffeeList">
     <div class="top">
       <div class="vapour">
         <span class="--vapour:1"></span>
@@ -15,7 +15,7 @@
         <span class="--vapour:17"></span>
       </div>
       <div class="inside">
-        <div class="coffee"></div>
+        <div class="{{coffee.class}}"></div>
       </div>
     </div>
     <div class="handle"></div>

@@ -3,3 +3,9 @@ export class OrderList {
   price: number;
   qty: number;
 }
+
+export class CoffeeList {
+  name: string;
+  class: string;
+  qty: number;
+}
