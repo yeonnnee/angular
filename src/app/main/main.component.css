@@ -8,7 +8,23 @@
 }
 
 .order {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin-top: 50px;
+}
+
+.order-section {
+  display: inline-block;
+}
+
+.status{
+  margin: 0 auto;
+}
+
+label {
+  /* margin-right: 10px; */
+  margin: 0 10px 0 0;
 }
 
 select {

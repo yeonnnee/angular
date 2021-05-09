@@ -1,19 +1,35 @@
 <div class="order-section">
   <h2>주문하시겠습니까?</h2>
-  <div class="order">
-    <select (change)="setMenu($event)">
-      <option value="no">---메뉴를 선택해주세요---</option>
-      <option value="아메리카노">아메리카노</option>
-      <option value="바닐라라떼">바닐라라떼</option>
-      <option value="녹차라떼">녹차라떼</option>
-      <option value="카페라떼">카페라떼</option>
-    </select>
-    <input type="number" (change)="setQty($event)">
-    <span>잔</span>
+  <form class="order" [formGroup]="orderForm">
+    <div class="order-section">
+      <label for="name">이름:</label>
+      <input type="text" id="name" formControlName="name">
+      <div *ngIf="name.invalid && name.touched">
+        Name is required.
+      </div>
+    </div>
+    <div class="order-section">
+      <label for="menu">메뉴:</label>
+      <select id="menu" (change)="setMenu($event)" formControlName="menu">
+        <option value="no">---메뉴를 선택해주세요---</option>
+        <option value="아메리카노">아메리카노</option>
+        <option value="바닐라라떼">바닐라라떼</option>
+        <option value="녹차라떼">녹차라떼</option>
+        <option value="카페라떼">카페라떼</option>
+      </select>
+    </div>
+    <div class="order-section">
+      <label for="qty">수량:</label>
+      <input type="number" id="qty" formControlName="qty" (change)="setQty($event)">
+    </div>
+    <div class="status">
+      <span>{{ orderForm.status}}</span>
+    </div>
+
     <div class="btn-section">
       <button (click)="addCart()">추가하기</button>
     </div>
-  </div>
+  </form>
 </div>
 <aside *ngIf="showOrderForm">
   <h2>Order List</h2>
