@@ -3,14 +3,22 @@
   <form class="order" [formGroup]="orderForm">
     <div class="order-section">
       <label for="name">이름:</label>
-      <input type="text" id="name" formControlName="name">
-      <div *ngIf="name.invalid && name.touched">
-        Name is required.
+      <input type="text" id="name" formControlName="name" (input)="setName($event)">
+      <div *ngIf="guest.invalid && guest.touched">
+        <div *ngIf="guest.errors.required">
+          Name is required.
+        </div>
+        <div *ngIf="guest.errors.minlength">
+          Input name at least 3 charactors
+        </div>
+        <div *ngIf="guest.errors.pattern">
+          check your name again plz
+        </div>
       </div>
     </div>
     <div class="order-section">
       <label for="menu">메뉴:</label>
-      <select id="menu" (change)="setMenu($event)" formControlName="menu">
+      <select id="menu" formControlName="menu">
         <option value="no">---메뉴를 선택해주세요---</option>
         <option value="아메리카노">아메리카노</option>
         <option value="바닐라라떼">바닐라라떼</option>
@@ -20,7 +28,7 @@
     </div>
     <div class="order-section">
       <label for="qty">수량:</label>
-      <input type="number" id="qty" formControlName="qty" (change)="setQty($event)">
+      <input type="number" id="qty" formControlName="qty">
     </div>
     <div class="status">
       <span>{{ orderForm.status}}</span>
