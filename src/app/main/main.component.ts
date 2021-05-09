@@ -9,11 +9,15 @@ import { CoffeeList, OrderList } from "../model/coffee.model";
 })
 
 export class MainPage implements OnInit {
-  nameValidator(name) {
-    console.log(name)
-    return (control): {[key: string]: any} | null => {
-      // const forbidden = name.test(control.value);
-      return name ? {forbiddenName: {value: control.value}} : null;
+  
+  validateEmail(c: FormControl) {
+    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+  
+    return EMAIL_REGEXP.test(c.value) ? null : {
+      validateEmail: {
+        valid: false
+      }
     };
   }
  
@@ -60,7 +64,7 @@ export class MainPage implements OnInit {
       name: new FormControl(this.name, [
         Validators.required,
         // Validators.minLength(4),
-        // this.nameValidator(this.name) // <-- 커스텀 유효성 검사기의 인자는 이렇게 전달합니다.
+        this.validateEmail, // <-- 커스텀 유효성 검사기의 인자는 이렇게 전달합니다.
         Validators.pattern('[A-Za-z]{5}')
       ]),
       menu: new FormControl(''),
