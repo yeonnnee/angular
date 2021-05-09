@@ -13,7 +13,7 @@ export class MainPage implements OnInit {
   validateEmail(c: FormControl) {
     let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
-  
+    console.log(c.value);
     return EMAIL_REGEXP.test(c.value) ? null : {
       validateEmail: {
         valid: false
@@ -27,6 +27,11 @@ export class MainPage implements OnInit {
   이 때 동기 유효성 검사기는 두번째 인자로, 
   비동기 유효성 검사기는 세번째 인자로 지정합니다.
   */
+  
+
+
+  /* FromBuild */
+
   // orderForm = this.fb.group({
   //   name: ['',[Validators.required,Validators.minLength(3)]],
   //   menu: ['',Validators.required],
@@ -34,7 +39,7 @@ export class MainPage implements OnInit {
   // });
 
 
-
+  /* FromControl */
   // coffeeQtyControl = new FormControl('');
 
 
@@ -49,22 +54,18 @@ export class MainPage implements OnInit {
   qty: number = 0;
   totalPrice: number = 0;
   quantity: Array<number> = [];
-  name: string = '';
 
-  orderForm = new FormGroup({
-    name: new FormControl(''),
-    menu: new FormControl(''),
-    qty: new FormControl('')
-  });
+  // formGroup && validation //
+  orderForm: FormGroup;
 
   constructor( private fb:FormBuilder){}
 
   ngOnInit() {
     this.orderForm = new FormGroup({
-      name: new FormControl(this.name, [
+      name: new FormControl('', [
         Validators.required,
         // Validators.minLength(4),
-        this.validateEmail, // <-- 커스텀 유효성 검사기의 인자는 이렇게 전달합니다.
+        this.validateEmail,
         Validators.pattern('[A-Za-z]{5}')
       ]),
       menu: new FormControl(''),
@@ -73,22 +74,21 @@ export class MainPage implements OnInit {
   }
  
 
-  setName(e: any) {
-    this.name = e.target.value;
-  }
-  setMenu(e: any) {
-    const menu = e.target.value;
-    if (menu !== "no") {
-      this.menu = e.target.value;
-    }
-  }
+// FromControl을 사용하면 이런식으로 값을 가져와 설정해주지 않아도 된다
+  // setMenu(e: any) {
+  //   const menu = e.target.value;
+  //   if (menu !== "no") {
+  //     this.menu = e.target.value;
+  //   }
+  // }
 
-  setQty(e: any) { 
-    this.inputVal = e.target.value;
-  }
+  // setQty(e: any) { 
+  //   this.inputVal = e.target.value;
+  // }
 
 
-  get guest() { return this.orderForm.get('name'); }
+  /* HTML 파일에서 해당 값에 error가 있는지 체크할때 필요한 아이들 */
+  get guest() { return this.orderForm.get('name'); } // -> guest.errors.required 의 guest && orderForm의 name formControl 타겟
   // get menu() { return this.orderForm.get('me'); }
   // get qty() { return this.orderForm.get('qty'); }
 
@@ -97,7 +97,8 @@ export class MainPage implements OnInit {
 
   addCart() {
 
-    // this.coffeeQtyControl.setValue(12);
+  
+    // this.coffeeQtyControl.setValue(12); -> 값을 이렇게 지정하여 수정할 수 도 있음
     console.log(this.orderForm.value);
     if (this.menu && this.inputVal) {
       this.showOrderForm = true;

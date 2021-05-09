@@ -3,7 +3,7 @@
   <form class="order" [formGroup]="orderForm">
     <div class="order-section">
       <label for="name">이름:</label>
-      <input type="text" id="name" formControlName="name" (input)="setName($event)">
+      <input type="text" id="name" formControlName="name">
       <div *ngIf="guest.invalid && guest.touched">
         <div *ngIf="guest.errors.required">
           Name is required.
